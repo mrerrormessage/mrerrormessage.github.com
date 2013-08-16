@@ -7,50 +7,10 @@ comments: true
 categories: [ruby, patterns, object-oriented]
 ---
 
-At Sittercity I've recently begun to work with some developers who are newer to the team. 
-Other members of the team and myself have developed a number of less-conventional patterns over the next month and when I show these patterns to the newer developers their form and function isn't immediately clear. 
-I want to lay out three patterns that we use on our team that aren't frequently used in ruby, but have been very helpful to us.
+I'm planning to do a four-part series in the next few days (or weeks) illustrating some common design patterns that have come up at work and see a lot of use there.
+These patterns are more used in some languages than others, but I have seen them used only very rarely in ruby code, which I think is a shame.
 
-Pattern One: The Directory
-
-    module Directory
-      attr_writer :permissions_manager
-
-      def self.permissions_manager
-        @dependency || PermissionsManager
-      end
-
-      def self.change_owner
-        ChangeOwner.new(dependency)
-      end
-    end
-
-What is it?
-This pattern is a hand-rolled module specific DI container. It knows about how to build the objects in its domain and where to find their dependencies. 
-
-Why is it useful?
-Objects outside the domain no longer do not need to know about the construction of these objects, they just ask for one! It also allows for configuration and mocking in integration tests.
-
-How did this pattern arise?
-This pattern comes from working strictly within TDD.
-Frequently we will have a test subject, say ThingOne and her tests will look like:
-
-    descibe Directory::ChangeOwner do
-      let(:permissions_manager) { double(:permissions_manager) }
-      let(:file) { double(:file) }
-      subject { described_class.new(dependency) }
-
-      it 'changes the owner if the user has write permissions on the file' do
-        dependency.stub(:has_write_permissions?).with(file).and_return(true)
-        file.should_receive(:owner=).with('newowner')
-        subject.execute(file, 'newowner')
-      end
-    end
-
-While this is a stupid example, the point remains that it is really easy to test things when you inject them as dependencies.
-As classes and systems become more complex, dependency injection helps to simplify things because I no longer ask "which thing do I do this to," instead I say "do that thing to the thing I'm holding."
-
-Pattern Two: The Context
+Pattern One: The Context
 
     module Directory
       class ChangePermissions
