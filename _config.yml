@@ -7,6 +7,7 @@ title: mrerrormessage.github.com
 subtitle: A Little Bit of Everything
 author: Robert Grider
 simple_search: http://google.com/search
+future: false
 description:
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
