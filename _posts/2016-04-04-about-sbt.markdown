@@ -1,0 +1,44 @@
+---
+layout: post
+title: Sbt and Scala
+tags: scala, sbt
+---
+
+As I mentioned in my prior post, I've been working primarily in Scala for the last year and a half.
+As a programming language, Scala manages to combine the reliability and utility of the JVM and the Java ecosystem with a terse, if not always beautiful syntax.
+It tends a bit towards the abstract side, and if you don't like types, you probably won't like Scala.
+I would love to cover some of the more rich parts of the Scala language (like path-dependent types and type lambdas) but I have to admit I don't quite fully understand them yet myself!
+
+Over the past year, the thing I've come to love and appreciate most about the Scala ecosystem is Sbt.
+Upon a time, Sbt stood for "simple build tool".
+If you look hard enough online you can find old blog posts that reference it as such.
+Now it stands for "Scala build tool" or is simply just "sbt."
+
+I like to joke that scala stands for "Sbt compiler and library architecture" while sbt stands for "Scala build tool" because a recursive acronym is really the best description of how the two tools interact.
+Sbt is used in the wild almost exclusively to build Scala (although it can also build java as well), while the assumption with new Scala builds is that they are Sbt-based.
+There are some very good reasons for this, actually.
+The killer feature that Sbt brings to the table is incremental compilation.
+If I change a source file, Sbt estimates which files will need to be recompiled and recompiles only those files.
+This speeds up compilation times immensely, especially on large projects.
+
+Although Sbt's killer feature is its ability to incrementally compile Scala, it's actually a veritable Swiss Army Knife of build tools.
+In order to get this blog rebooted, I had the experience of working briefly with ruby and bundler.
+I had forgotten how painful working in Ruby could be: you have to set up your ruby version manager, you have to setup the correct version of ruby, you have to run bundle install and then finally you can do some actual blogging/programming!
+Sbt manages to combine many of those features into one tool.
+It manages your scala version (including installing Scala when necessary), it manages not only the dependencies for the project you're building, but also the dependencies of the project that's *doing the building*, and finally it compiles and runs your program (or compiles it to a jar to be run standalone).
+
+So over the next few days (or weeks if I'm feeling less-motivated), I want to explore some of the following aspects of Sbt.
+Note that these are in no particular order and I will likely write about them in a different order.
+
+* What's the deal with `build.sbt`? a brief introduction to `sbt` and the anatomy of an `sbt` project.
+* Where do I put my settings? `sbt` as a configuration engine and manager.
+* How do I install the damn thing? figuring out how to run `sbt` and us it profitably in your project.
+* Where is `mvn:package`? `sbt` as a task runner and compilation manager.
+* Is that *all* it does? An introduction to `sbt` plugins and writing your own.
+* Why would I stop at one? Sbt and multi-project builds.
+
+I would also like to explore some advanced / internals topics that I don't feel have been explored sufficiently:
+
+* How incredibly awesome the Sbt launcher is
+* Things Sbt does that you didn't know about
+* The functional side of Sbt's internals
