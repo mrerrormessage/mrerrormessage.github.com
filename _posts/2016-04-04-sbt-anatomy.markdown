@@ -60,7 +60,7 @@ name := "gh-explorer"
 
 scalaVersion := "2.11.8"
 
-scalacOptions ++= 
+scalacOptions ++=
   Seq("-deprecation", "-unchecked", "-feature", "-Xcheckinit", "-encoding", "us-ascii", "-Xlint", "-Xfatal-warnings")
 ```
 
@@ -71,7 +71,7 @@ We'll see something like the following:
 ➜  gh-explorer git:(master) sbt
 [info] Loading project definition from /home/rgrider/gh-explorer/project
 [info] Set current project to gh-explorer (in build file:/home/rgrider/gh-explorer/)
-> 
+>
 ```
 
 If we type `compile` at this point and hit enter, sbt will fetch the 2.11.8 compiler and library jars, and keep them ready for our use.
@@ -109,10 +109,10 @@ So before we go, we should actually write some Scala today.
 We'll create a new scala file at `src/main/scala/CommandLine.scala` that looks like this:
 
 ```scala
-package us.grider.ghexplorer                                                                                                                                                               
-                                                                                                                                                                                           
-object CommandLine extends App {                                                                                                                                                           
-  Console.println("-h: print this message and exit")                                                                                                                                       
+package us.grider.ghexplorer
+
+object CommandLine extends App {
+  Console.println("-h: print this message and exit")
 }
 ```
 
@@ -123,7 +123,7 @@ We see the following result:
 
 ```
 > run
-[info] Running us.grider.ghexplorer.CommandLine 
+[info] Running us.grider.ghexplorer.CommandLine
 -h: print this message and exit
 [success] Total time: 0 s, completed Apr 4, 2016 9:15:39 PM
 ```
