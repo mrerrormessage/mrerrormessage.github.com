@@ -32,10 +32,10 @@ Note that these are in no particular order and I will likely write about them in
 
 * What's the deal with `build.sbt`? a brief introduction to `sbt` and the anatomy of an `sbt` project.
 * Where do I put my settings? `sbt` as a configuration engine and manager.
-* How do I install the damn thing? figuring out how to run `sbt` and us it profitably in your project.
+* How do I install the damn thing? figuring out how to run `sbt` and use it profitably in your project.
 * Where is `mvn:package`? `sbt` as a task runner and compilation manager.
 * Is that *all* it does? An introduction to `sbt` plugins and writing your own.
-* Why would I stop at one? Sbt and multi-project builds.
+* Why stop at one? Sbt and multi-project builds.
 
 I would also like to explore some advanced / internals topics that I don't feel have been explored sufficiently:
 
