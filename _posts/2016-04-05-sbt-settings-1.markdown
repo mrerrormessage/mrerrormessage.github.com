@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Where do I put my settings? `sbt` as a configuration engine and manager
+title: Where do I put my settings? `sbt` as a configuration engine and manager (part 1)
 tags: scala, sbt
 ---
 
@@ -101,20 +101,20 @@ I'm going to write my tests in the [FunSpec style](http://www.scalatest.org/at_a
 So the test in `src/test/scala/ArgumentSpec.scala`:
 
 ```scala
-package us.grider.ghexplorer                                                                                                                                                               
-                                                                                                                                                                                           
-import org.scalatest.FunSpec                                                                                                                                                               
-                                                                                                                                                                                           
-class ArgumentsSpec extends FunSpec {                                                                                                                                                      
-  describe("parsing arguments") {                                                                                                                                                          
-    it("should print help when no arguments provided") {                                                                                                                                   
-      assert(Arguments.parse(Array()) == Help)                                                                                                                                             
-    }                                                                                                                                                                                      
-    it("should print help when -h argument provided") {                                                                                                                                    
+package us.grider.ghexplorer
+
+import org.scalatest.FunSpec
+
+class ArgumentsSpec extends FunSpec {
+  describe("parsing arguments") {
+    it("should print help when no arguments provided") {
+      assert(Arguments.parse(Array()) == Help)
+    }
+    it("should print help when -h argument provided") {
       pending
-    }                                                                                                                                                                                      
-  }                                                                                                                                                                                        
-} 
+    }
+  }
+}
 ```
 
 We can then flip over to sbt and run `test` and see that once we get our tests compiling, one of them is failing and the other is pending.
